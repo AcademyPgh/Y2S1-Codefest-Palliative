@@ -1,15 +1,18 @@
-h1 {
+*{
+  margin:0
+}
 
+h1 {
   background-color: #fcd8ae;
   text-align: center;
   font-size: 100px;
   font-family: 'Open Sans', sans-serif;
 }
-body{
-background-color: #fcd8ae;
-}
-.picture{
-  text-align: center;
+
+header{
+  background-color: #fcd8ae;
+  padding: 18px 0;
+  padding-right: 20px;
 }
 .nav {
     list-style-type: none;
@@ -26,16 +29,19 @@ background-color: #fcd8ae;
 .nav li a {
     display: block;
     border-bottom: 1px solid #ffffff;
-    color: #000;
-    padding: 8px 16px;
-    color: black;
+    color: #fff;
+    padding: 15px 16px;
     text-decoration: none;
 
 }
 
+.nav li a i{
+  float:right;
+}
+
 .nav li a.active {
     background-color: #f89829;
-    color: #000;
+    color: #fff;
 }
 .nav li a:hover {
     background-color: #555;
@@ -53,18 +59,17 @@ input[type=text], input[type=password] {
 }
 
 /* Set a style for all buttons */
-button {
+.button {
    background-color: #f89829;
    color: white;
    padding: 14px 20px;
    margin: 8px 0;
    border: none;
-   cursor: pointer;
-   width: 100%;
+   font-family: 'Open Sans', sans-serif;
 }
 
 /* Add a hover effect for buttons */
-button:hover {
+.button:hover {
    opacity: 0.8;
 }
 
@@ -95,6 +100,10 @@ button:hover {
 span.psw {
    float: right;
    padding-top: 16px;
+}
+
+.addButton{
+  float:right;
 }
 
 /* Change styles for span and cancel button on extra small screens */
