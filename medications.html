@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <title> PPCC--Medications</title>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link href="css/style.css" type="text/css" rel="stylesheet">
+
+<style>
+.datetime{
+  float: right;
+  margin: 305px;
+  text-align: center;
+}
+.pageBody{
+  position: fixed;
+  top: 135px;
+  left: 305px;
+  width: 75%;
+  height: 75%;
+  border-style: solid;
+
+  font-family: sans-serif;
+  overflow: scroll;
+}
+
+.todaysMedicatoins{
+
+}
+.todaysMedicatoins_header{
+color: #4e4c4c;
+}
+
+.currentMedications{
+font-weight: bold;
+color: #4e4c4c;
+}
+.currentMedications_header{
+  color: #4e4c4c;
+}
+
+.addButton{
+  align-items: right;
+}
+
+.left{
+  display: inline-block;
+        float: right;
+      }
+.right{
+  display: inline-block;
+        float: right;
+      }
+
+.primaryRow{
+  color:#f89829 ;
+}
+
+
+table, th, td {
+    border: 1px solid black;
+}
+</style>
+
+
+
+</head>
+<body>
+
+  <header>
+   <img src="http://group2.com/PPCC-Photos/PPCC-Logo-Splash.png" width="250" alt="Pediatric Palliative Care Coalition"/>
+   <button class="button addButton"> Add <i class="fa fa-plus" aria-hidden="true"></i></button>
+ </header>
+
+ <p id="demo"></p>
+
+
+
+  <ul class="nav">
+    <li><a class="active" href="#patientprofile">Patient profile <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
+    <li><a href="#calendar">Calendar <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
+    <li><a href="#medication">Medications <i class="fa fa-chevron-right" aria-hidden="true"></i></a> </li>
+    <li><a href="#homecareplan">Home Care Plan <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
+    <li><a href="#appointmental">Appointement Activity Log <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
+    <li><a href="#carebook">Care Book <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
+  </ul>
+
+
+
+
+<section class = "pageBody">
+    <script>
+    var d = new Date;
+    document.getElementById("demo").innerHTML = d;
+    </script>
+
+    <h3 class="todaysMedicatoins_header">Today's Medications: </h3>
+    <button class="right" type="button">Add/Edit</button>
+    <!-- Link to more complete medication info-->
+      <!-- How to link to the backend?-->
+        <table class= "todaysMedicatoins" style="width:100%">
+          <tr class="primaryRow">
+            <th>Medication</th>
+            <th>Reason</th>
+            <th>Doseage</th>
+            <th>Frequency</th>
+            <th>Next dose</th>
+          </tr>
+          <tr>
+            <td><strong>Lipitor</strong></td>
+            <td>Lowers Cholesterol</td>
+            <td>500mg</td>
+            <td>Daily</td>
+            <th>3:00</th>
+          </tr>
+          <tr>
+            <td><strong>Nexium</strong></td>
+            <td>Anti-acid</td>
+            <td>250mg</td>
+            <td>3x Daily</td>
+            <th>5:00</th>
+          <tr>
+            <td><strong>Plavix</strong></td>
+            <td>Blood Thinner</td>
+            <td>300mg</td>
+            <td>2x Daily</td>
+            <th>6:50</th>
+        </table>
+
+    <h3 class="currentMedications_header"> Current Medications:</h3>
+
+    <button class="right" type="button">Add/Edit</button>
+    <table class="currentMedications"style="width:100%">
+      <tr class="primaryRow">
+        <th>Medication</th>
+        <th>Reason</th>
+        <th>Doseage</th>
+      </tr>
+      <tr>
+        <td>Lipitor</td>
+        <td>Lowers Cholesterol</td>
+        <td>500mg</td>
+      </tr>
+      <tr>
+        <td>Nexium</td>
+        <td>Anti-acid</td>
+        <td>250mg</td>
+      <tr>
+        <td>Plavix</td>
+        <td>Blood Thinner</td>
+        <td>300mg</td>
+    </table>
+
+
+
+</section>
+
+</body>
+</html>
