@@ -1,0 +1,48 @@
+body {
+  overflow: scroll;
+}
+
+.profileInput {
+  position: fixed;
+  top: 135px;
+  left: 305px;
+  border-style: solid;
+  width: 70%;
+  height:75%;
+  font-family: 'Open Sans', sans-serif;
+  overflow: scroll;
+}
+
+.left {
+  display: inline;
+  margin-left: 1em;
+  float: left;
+  width: 47%;
+}
+
+.left input {
+	border-style: none;
+	border-bottom: solid;
+	border-color: #f89829;
+	background-color: #e5e2e0;
+}
+
+.right {
+  display: inline-block;
+  top: 228px;
+  float: left;
+  margin-left: 1em;
+  width: 47%;
+}
+
+.right input {
+	border-style: none;
+	border-bottom: solid;
+	border-color: #f89829;
+	background-color: #e5e2e0;
+}
+
+/*CSS FOR ADD PROFILE BUTTONS*/
+.addProfileButton {
+  width:100%;
+}

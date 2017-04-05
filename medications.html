@@ -13,11 +13,9 @@
   text-align: center;
 }
 .pageBody{
-  position: fixed;
-  top: 135px;
-  left: 305px;
+padding-left: 300px;
   width: 75%;
-  height: 75%;
+  height: 100%;
   border-style: solid;
 
   font-family: sans-serif;
@@ -25,7 +23,8 @@
 }
 
 .todaysMedicatoins{
-
+height:50%;
+height: 75px;
 }
 .todaysMedicatoins_header{
 color: #4e4c4c;
@@ -33,6 +32,7 @@ color: #4e4c4c;
 
 .currentMedications{
 font-weight: bold;
+height: 75px;
 color: #4e4c4c;
 }
 .currentMedications_header{
@@ -45,7 +45,7 @@ color: #4e4c4c;
 
 .left{
   display: inline-block;
-        float: right;
+        float: left;
       }
 .right{
   display: inline-block;
@@ -89,13 +89,9 @@ table, th, td {
 
 
 <section class = "pageBody">
-    <script>
-    var d = new Date;
-    document.getElementById("demo").innerHTML = d;
-    </script>
 
-    <h3 class="todaysMedicatoins_header">Today's Medications: </h3>
-    <button class="right" type="button">Add/Edit</button>
+    <h3 class="todaysMedicatoins_header left" id="date">Today's Medications: </h3>
+    <button class="right button" type="button">Add/Edit</button>
     <!-- Link to more complete medication info-->
       <!-- How to link to the backend?-->
         <table class= "todaysMedicatoins" style="width:100%">
@@ -106,20 +102,20 @@ table, th, td {
             <th>Frequency</th>
             <th>Next dose</th>
           </tr>
-          <tr>
+          <tr class= "todaysMedicatoins">
             <td><strong>Lipitor</strong></td>
             <td>Lowers Cholesterol</td>
             <td>500mg</td>
             <td>Daily</td>
             <th>3:00</th>
           </tr>
-          <tr>
+          <tr class= "todaysMedicatoins">
             <td><strong>Nexium</strong></td>
             <td>Anti-acid</td>
             <td>250mg</td>
             <td>3x Daily</td>
             <th>5:00</th>
-          <tr>
+          <tr class= "todaysMedicatoins">
             <td><strong>Plavix</strong></td>
             <td>Blood Thinner</td>
             <td>300mg</td>
@@ -129,23 +125,23 @@ table, th, td {
 
     <h3 class="currentMedications_header"> Current Medications:</h3>
 
-    <button class="right" type="button">Add/Edit</button>
+    <button class="right button" type="button">Add/Edit</button>
     <table class="currentMedications"style="width:100%">
       <tr class="primaryRow">
         <th>Medication</th>
         <th>Reason</th>
         <th>Doseage</th>
       </tr>
-      <tr>
+      <tr class="currentMedications">
         <td>Lipitor</td>
         <td>Lowers Cholesterol</td>
         <td>500mg</td>
       </tr>
-      <tr>
+      <tr class="currentMedications">
         <td>Nexium</td>
         <td>Anti-acid</td>
         <td>250mg</td>
-      <tr>
+      <tr class="currentMedications">
         <td>Plavix</td>
         <td>Blood Thinner</td>
         <td>300mg</td>
@@ -154,6 +150,24 @@ table, th, td {
 
 
 </section>
+<script>
+function formatDate(date) {
+  var monthNames = [
+    "January", "February", "March",
+    "April", "May", "June", "July",
+    "August", "September", "October",
+    "November", "December"
+  ];
+
+  var day = date.getDate();
+  var monthIndex = date.getMonth();
+  var year = date.getFullYear();
+
+  return  monthNames[monthIndex] + ' ' + day + ', ' + year;
+}
+
+  document.getElementById("date").innerHTML = formatDate(new Date());
+</script>
 
 </body>
 </html>
