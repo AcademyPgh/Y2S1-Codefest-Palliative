@@ -1,280 +1,378 @@
-<!DOCTYPE html>
-<html>
-<head>
-
-  <script
-    src="https://code.jquery.com/jquery-3.2.1.min.js"
-    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous"></script>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-  <title> PPCC--Medications</title>
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-<link href="css/style.css" type="text/css" rel="stylesheet">
-
-<style>
-
-.padtop {padding-top: 20px;}
-.star{  text-align: center;}
-.datetime{
-  float: right;
-  margin: 305px;
-  text-align: center;
+@{
+    ViewBag.Title = "Medications";
+    Layout = "~/Views/Shared/_Navigation.cshtml";
 }
-.pageBody{
-padding-left: 310px;
-  width: 75%;
-  height: 100%;
+<div class="modal fade" id="med_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Medication Information</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-5">Medication Brand Name</div>
+                    <div class="col-md-7" id="name_brand"></div>
+                    <div class="col-md-5">Medication Generic Name</div>
+                    <div class="col-md-7" id="generic_name"></div>
+                    <div class="col-md-5">Dosage</div>
+                    <div class="col-md-7" id="dosage"></div>
+                    <div class="col-md-5">Concentration</div>
+                    <div class="col-md-7" id="concentration"></div>
+                    <div class="col-md-5">Frequency</div>
+                    <div class="col-md-7" id="frequency"></div>
+                    <div class="col-md-5">Route</div>
+                    <div class="col-md-7" id="route"></div>
+                    <div class="col-md-5">Reason</div>
+                    <div class="col-md-7" id="reason"></div>
+                    <div class="col-md-5">Prescribed By</div>
+                    <div class="col-md-7" id="prescribed_by"></div>
+                    <div class="col-md-5">Pharmacy</div>
+                    <div class="col-md-7" id="pharmacy"></div>
+                    <div class="col-md-5">Start Date</div>
+                    <div class="col-md-7" id="start_date"></div>
+                    <div class="col-md-5">End Date</div>
+                    <div class="col-md-7" id="end_date"></div>
+                    <div class="col-md-5">Interactions</div>
+                    <div class="col-md-7" id="interactions"></div>
+                    <div class="col-md-5">Experienced Side Effects</div>
+                    <div class="col-md-7" id="experienced_side_effects"></div>
+                    <div class="col-md-5">Reason Stopped</div>
+                    <div class="col-md-7" id="reason_stopped"></div>
+                </div>
+             </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<h1>Medications</h1>
+<h2><i class="fa fa-heartbeat" aria-hidden="true"></i>
+ Current Medications</h2>
+<div id="medication_display"></div>
 
-
-  font-family: sans-serif;
-  overflow: scroll;
-}
-
-.todaysMedicatoins{
-height:50%;
-height: 75px;
-}
-.todaysMedicatoins_header{
-color: #4e4c4c;
-}
-
-.currentMedications{
-font-weight: bold;
-height: 75px;
-color: #4e4c4c;
-}
-.currentMedications_header{
-  color: #4e4c4c;
-}
-
-.addButton{
-  align-items: right;
-}
-
-.left{
-  display: inline-block;
-        float: left;
-      }
-.right{
-  display: inline-block;
-        float: right;
-      }
-
-.primaryRow{
-  color:#f89829 ;
-}
-
-
-table, th, td {
-    border: 1px solid black;
-}
-
-
-h1 {
-  text-align: left;
-  font-size: 36px;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 200;
-  color: #0078ab;
-}
-
-h2 {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 200;
-    font-size: 20px;
-    color: #0078ab;
-}
-
-
-
-
-</style>
-
-
-
-</head>
-<body>
-
-    <ul class="nav">
-   <li style="background: white;"><img src="http://group2.com/PPCC-Photos/PPCC-Logo-Header.png" width="280" alt="Pediatric Palliative Care Coalition" class="padtop"/></li>
-    <li><a class="active" href="#patientprofile">Patient profile <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
-    <li><a href="#calendar">Calendar <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
-    <li><a href="#medication">Medications <i class="fa fa-chevron-right" aria-hidden="true"></i></a> </li>
-    <li><a href="#homecareplan">Home Care Plan <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
-    <li><a href="#appointmental">Appointement Activity Log <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
-    <li><a href="#carebook">Care Book <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
-  </ul>
-
-
-
-
-<section class = "pageBody">
-
-    <h3 class="todaysMedicatoins_header left" id="date">Today's Medications: </h3>
-    <!-- Button trigger modal -->
-    <button type="button" class="btn button addButton" data-toggle="modal" data-target="#myModal">
-      Add/Edit
-    </button>
-    <!-- Link to more complete medication info-->
-      <!-- How to link to the backend?-->
-        <table class= "todaysMedicatoins" style="width:100%">
-          <tr class="primaryRow">
-            <th>Medication</th>
-            <th>Reason</th>
-            <th>Doseage</th>
+<script id="entry-template" type="text/x-handlebars-template">
+    <table class="table table-striped">
+        <tr>
+            <th>Name Brand</th>
+            <th>Dosage</th>
+            <th>Concentration</th>
             <th>Frequency</th>
-            <th>Next dose</th>
-          </tr>
-          <tr class= "todaysMedicatoins">
-            <td><strong>Lipitor</strong></td>
-            <td>Lowers Cholesterol</td>
-            <td>500mg</td>
-            <td>Daily</td>
-            <td>3:00</td>
-          </tr>
-          <tr class= "todaysMedicatoins">
-            <td><strong>Nexium</strong></td>
-            <td>Anti-acid</td>
-            <td>250mg</td>
-            <td>3x Daily</td>
-            <td>5:00</td>
-          </tr>
-          <tr class= "todaysMedicatoins">
-            <td><strong>Plavix</strong></td>
-            <td>Blood Thinner</td>
-            <td>300mg</td>
-            <td>2x Daily</td>
-            <td>6:50</td>
-          </tr>
-        </table>
-
-<p class="star">
-  ***
-</p>
-    <h3 class="currentMedications_header left"> Current Medications:</h3>
-    <!-- Button trigger modal -->
-    <button type="button" class="btn button addButton" data-toggle="modal" data-target="#myModal">
-      Add/Edit
-    </button>
-
-    <table class="currentMedications"style="width:100%">
-      <tr class="primaryRow">
-        <th>Medication</th>
-        <th>Reason</th>
-        <th>Doseage</th>
-      </tr>
-      <tr class="currentMedications">
-        <td>Lipitor</td>
-        <td>Lowers Cholesterol</td>
-        <td>500mg</td>
-      </tr>
-      <tr class="currentMedications">
-        <td>Nexium</td>
-        <td>Anti-acid</td>
-        <td>250mg</td>
-      </tr>
-      <tr class="currentMedications">
-        <td>Plavix</td>
-        <td>Blood Thinner</td>
-        <td>300mg</td>
-      </tr>
-      <tr class="currentMedications">
-        <td>Advair Diskus</td>
-        <td>Asthma Inhaler</td>
-        <td>300mg</td>
-      </tr>
-     <tr class="currentMedications">
-        <td>Amoxicillin</td>
-        <td>Anti-biotic</td>
-        <td>300mg</td>
-      </tr>
+            <th>Route</th>
+            <th>See More Info</th>
+        </tr>
+    {{#each .}}
+    <tr class="med_row">
+        <td>{{name_brand}}</td>
+        <td>{{dosage}}</td>
+        <td>{{concentration}}</td>
+        <td>{{frequency}}</td>
+        <td>{{route}}</td>
+        <td><i class="fa fa-plus-circle fa-lg" aria-hidden="true" data-toggle="modal" data-target="#med_modal" data-id={{id}}></i></td>
+    </tr>
+    {{/each}}
     </table>
-
-    <p class="star">
-      ***
-    </p>
-
-<div class="pharm_list">
-  <h3 class="left">Pharmacy List: </h3>
-    <button class="right button" type="button">Add/Edit</button>
-  <table class="currentMedications"style="width:100%">
-    <tr class="primaryRow">
-      <th>Pharmacy</th>
-      <th>Street</th>
-      <th>Zip</th>
-
-
-    </tr>
-    <tr class="currentMedications">
-      <td>Giant Eagle</td>
-      <td>1234 Grocery Drive</td>
-      <th>12345</th>
-    </tr>
-    <tr class="currentMedications">
-      <td>Rite Aid</td>
-      <td>5678 Medicine Rd.</td>
-      <th>23456</th>
-    </tr>
-
-</div>
-
-</section>
+</script>
 <script>
-function formatDate(date) {
-  var monthNames = [
-    "January", "February", "March",
-    "April", "May", "June", "July",
-    "August", "September", "October",
-    "November", "December"
-  ];
 
-  var day = date.getDate();
-  var monthIndex = date.getMonth();
-  var year = date.getFullYear();
+    var medications = [
+        {   "id":"0",
+            "current": "false",
+            "name_brand": "Benadryl",
+            "generic_name": "Diphenhydramine",
+            "dosage": "25mg, 2 tsp",
+            "concentration": "12.5 mg/5ml",
+            "frequency": "every 6 hours as needed",
+            "route": "by mouth",
+            "reason": "pet allergies",
+            "prescribed_by": "Dr. Primary",
+            "pharmacy": "Rite Aid",
+            "start_date": "3/1/2017",
+            "end_date": "4/1/2017",
+            "interactions": "could lower seizure threshold",
+            "experienced_side_effects": "caused agitation",
+            "reason_stopped": "caused agitation",
+        },
+        {
+            "id":"1",
+            "current": "true",
+            "name_brand": "Gammagard",
+            "generic_name": "Immunoglobulin",
+            "dosage": "15g",
+            "concentration": "100 mg/ml",
+            "frequency": "every 4 weeks",
+            "route": "i.v.",
+            "reason": "replacement IgG",
+            "prescribed_by": "Dr. Immunologist",
+            "pharmacy": "Walgreen's Infusion Services",
+            "start_date": "1/1/2016",
+            "end_date": "N/A",
+            "interactions": "could lower seizure threshold",
+            "experienced_side_effects": "itching, swelling, redness at site",
+            "reason_stopped": "",
+        }];
 
-  return  monthNames[monthIndex] + ' ' + day + ', ' + year;
-}
+    //Modular to show full medication info
+    $().ready(function () {
+        var source = $("#entry-template").html();
+        var template = Handlebars.compile(source);
+        var html = template(medications);
+        $("#medication_display").html(html);
+        $('i').click(function (e) {
+            idd = $(e.target).data("id");
+            //console.log(medications[0].name_brand);
+            if (idd in medications) {
+                $('#name_brand').html(medications[idd].name_brand);
+                $('#generic_name').html(medications[idd].generic_name);
+                $('#dosage').html(medications[idd].dosage);
+                $('#concentration').html(medications[idd].concentration);
+                $('#frequency').html(medications[idd].frequency);
+                $('#route').html(medications[idd].route);
+                $('#reason').html(medications[idd].reason);
+                $('#prescribed_by').html(medications[idd].prescribed_by);
+                $('#pharmacy').html(medications[idd].pharmacy);
+                $('#start_date').html(medications[idd].start_date);
+                $('#end_date').html(medications[idd].end_date);
+                $('#interactions').html(medications[idd].interactions);
+                $('#experienced_side_effects').html(medications[idd].experienced_side_effects);
+                $('#reason_stopped').html(medications[idd].reason_stopped);
+            }
+        })
+    });
 
-  document.getElementById("date").innerHTML = formatDate(new Date());
+
 </script>
 
+<!--Add medication button-->
+<button type="button" class="btn button addButton" data-toggle="modal" data-target="#myModal">
+    Add/Edit
+</button>
 
-<!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add Medication</h4>
-      </div>
-      <div class="modal-body">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add Medication</h4>
+            </div>
+            <div class="modal-body">
 
-        <h2>Medication</h2>
-        <!-- <hr /> -->
-          <form>
-          <input class="input" type="text" name="Name:" placeholder="Name">
-          <input class="input" type="text" name="Start Date" placeholder=" Start Date ">
-          <input class="input" type="text" name="End Date" placeholder=" End Date ">
-          <input class="input" type="text" name="Frequency" placeholder="Frequency">
-          <input class="input" type="text" name="Dosage" placeholder="Dosage">
-          <input class="input" type="text" name="Prescribing Doctor" placeholder="Prescribing Doctor" >
-          <input class="input" type="text" height = "400px" name="Notes" placeholder="Notes">
-          </form>
+                <h2>Medication</h2>
+                <!-- <hr /> -->
+                <form>
+                    <input class="input" type="text" name="name_brand:" placeholder="Name Brand">
+                    <input class="input" type="text" name="generic_name:" placeholder="Generic Name">
+                    <input class="input" type="text" name="dosage" placeholder="Dosage">
+                    <input class="input" type="text" name="concentration" placeholder="Concentration">
+                    <input class="input" type="text" name="frequency" placeholder="Frequency">
+                    <input class="input" type="text" name="route" placeholder="Route">
+                    <input class="input" type="text" name="reason" placeholder="Reason">
+                    <input class="input" type="text" name="prescribed_by" placeholder="Prescribing Doctor">
+                    <input class="input" type="text" name="pharmacy" placeholder="Pharmacy">
+                    <input class="input" type="text" name="start_date" placeholder=" Start Date ">
+                    <input class="input" type="text" name="end_date" placeholder=" End Date ">
+                    <input class="input" type="text" name="interactions" placeholder="Interactions to other medications">
+                    <input class="input" type="text" name="experienced_side_effects" placeholder="Side effects experienced">
+                    <input class="input" type="text" name="reason_stopped" placeholder="Reason stopped medication">
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+
+
+                    <input class="input" type="text" height="400px" name="Notes" placeholder="Notes">
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+<!--Pharmacy-->
+<div class="modal fade" id="pharmacy_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Pharmacy Information</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-5">Name</div>
+                    <div class="col-md-7" id="pharmacy_name"></div>
+                    <div class="col-md-5">Address</div>
+                    <div class="col-md-7" id="pharmacy_address"></div>
+                    <div class="col-md-5">Phone</div>
+                    <div class="col-md-7" id="pharmacy_phone"></div>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
+<h2><i class="fa fa-medkit" aria-hidden="true"></i>
+ Pharmacy</h2>
+<div id="pharmacy_display"></div>
 
-</body>
-</html>
+<script id="entry-template2" type="text/x-handlebars-template">
+    <table class="table table-striped">
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Number</th>
+        </tr>
+        {{#each .}}
+        <tr class="pharmacy_row">
+            <td>{{pharmacy_name}}</td>
+            <td>{{pharmacy_address}}</td>
+            <td>{{pharmacy_phone}}</td>
+        </tr>
+        {{/each}}
+    </table>
+</script>
+
+<script>
+
+    var pharmacy = [
+        {
+            "id": "0",
+            "current": "true",
+            "pharmacy_name": "Duquesne University Pharmacy",
+            "pharmacy_address": "1860 Centre Ave, Pittsburgh, PA 15219",
+            "pharmacy_phone": "(412)246-0963",
+        },
+        {
+            "id": "1",
+            "current": "true",
+            "pharmacy_name": "CVS",
+            "pharmacy_address": "429 Smithfield St, Pittsburgh, PA 15222",
+            "pharmacy_phone": "(412)261-4846",
+        }];
+
+    //Modular to show full medication info AND just show the handlebar table
+    $().ready(function () {
+        var source = $("#entry-template2").html();
+        var template = Handlebars.compile(source);
+        var html = template(pharmacy);
+        $("#pharmacy_display").html(html);
+    })
+
+</script>
+
+<!--Add Pharmacy button-->
+<button type="button" class="btn button addButton" data-toggle="modal" data-target="#pharmacyModal">
+    Add/Edit
+</button>
+
+<div class="modal fade" id="pharmacyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add Pharmacy</h4>
+            </div>
+            <div class="modal-body">
+
+                <h2>Pharmacy</h2>
+                <!-- <hr /> -->
+                <form>
+                    <input class="input" type="text" name="pharmacy_name:" placeholder="Name">
+                    <input class="input" type="text" name="pharmacy_address:" placeholder="Address">
+                    <input class="input" type="text" name="pharmacy_phone" placeholder="Phone">
+
+                    <input class="input" type="text" height="400px" name="Notes" placeholder="Notes">
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Pharmacy-->
+<div class="modal fade" id="pharmacy_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Pharmacy Information</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-5">Name</div>
+                    <div class="col-md-7" id="pharmacy_name"></div>
+                    <div class="col-md-5">Address</div>
+                    <div class="col-md-7" id="pharmacy_address"></div>
+                    <div class="col-md-5">Phone</div>
+                    <div class="col-md-7" id="pharmacy_phone"></div>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<h2><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Medical Allergies</h2>
+<div id="allergy_display"></div>
+
+<script id="allergy_template" type="text/x-handlebars-template">
+    <table class="table table-striped">
+        <tr>
+            <th>Allergy</th>
+        </tr>
+        {{#each .}}
+        <tr class="allergy_row">
+            <td>{{allergy_name}}</td>
+        </tr>
+        {{/each}}
+    </table>
+</script>
+
+<script>
+
+    var allergy = [
+        {
+            "id": "0",
+            "current": "true",
+            "allergy_name": "Naproxin"
+        },
+        {
+            "id": "1",
+            "current": "true",
+            "allergy_name": "Ibuprofen",
+        }];
+
+    //Modular to show full medication info AND just show the handlebar table
+    $().ready(function () {
+        var source = $("#allergy_template").html();
+        var template = Handlebars.compile(source);
+        var html = template(allergy);
+        $("#allergy_display").html(html);
+    })
+
+</script>
+
+<!--Add Allergy button-->
+<button type="button" class="btn button addButton" data-toggle="modal" data-target="#allergyModal">
+    Add/Edit
+</button>
+
+<!--Pharmacy-->
+<div class="modal fade" id="allergy_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Allergy Information</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-5">Name</div>
+                    <div class="col-md-7" id="allergy_name"></div>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
