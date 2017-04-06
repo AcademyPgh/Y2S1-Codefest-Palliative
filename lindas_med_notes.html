@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <title> PPCC--Interactive Care Book! </title>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link href="css/style.css" type="text/css" rel="stylesheet">
+<style>
+.input {
+  border-style: none;
+  border-bottom: solid;
+  border-color: #f89829
+  background: #e5e2e0;
+}
+.container{
+  border-style: black solid thin;
+  margin-left: 320px;
+  width: 50%;
+}
+h1 {
+  font-size:36px;
+  font-family:'Open Sans', sans-serif;
+  font-weight: 200;
+  color: #f89829;
+  background:none;
+  text-align:left;
+}
+h2 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 200;
+  font-size: 20px;
+  color: #f89829;
+}
+</style>
+</head>
+<body>
+  <header>
+   <img src="http://group2.com/PPCC-Photos/PPCC-Logo-Header.png" width="250" alt="Pediatric Palliative Care Coalition"/>
+   <button class="button addButton"> Add <i class="fa fa-plus" aria-hidden="true"></i></button>
+ </header>
+ <ul class="nav">
+   <li><a class="active" href="#patientprofile">Home Activity Log <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
+   <li><a href="#calendar">Calendar <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
+   <li><a href="#medication">Medications <i class="fa fa-chevron-right" aria-hidden="true"></i></a> </li>
+   <li><a href="#homecareplan">Medical Care Notes <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
+   <li><a href="#appointmental">Profile <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
+   <li><a href="#carebook">Search <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
+   <li><a href="#carebook">Other Sections <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
+ </ul>
+
+<div class="container">
+  <h1 style="font-size:36px;font-family:'Open Sans', sans-serif;font-weight: 200;color: #f89829;background:none;text-align:left;">Medical Care Notes</h1>
+</div>
+<div class="container">
+<h2>Appointments / Meetings Log:</h2>
+<!-- <hr /> -->
+  <form>
+  <input class="input" type="text" name="Call/Meeting" placeholder="Call/Meeting">
+  <input class="input" type="text" name="Date/Time" placeholder=" Date/Time ">
+  <input class="input" type="text" name="Name of Person / Agency" placeholder="Name of Person / Agency">
+  <input class="input" type="text" name="Contact Information" placeholder="Contact Information">
+  <input class="input" type="text" height = "400px" name="What was discussed" placeholder="What was discussed">
+  </form>
+  <button class="button">Add <i class="fa fa-plus" aria-hidden="true"></i></button>
+</div>
+<div class="container">
+   <h2>Hospital Stays:</h2>
+   <!-- <hr /> -->
+   <form>
+  <input class="input" type="text" name="Date of Admission" placeholder="Date of Admission">
+  <input class="input" type="text" name="Reason for Admission" placeholder="Reason for Admission">
+  <input class="input" type="text" name="Hospital Information" placeholder="Hospital Information">
+  <input class="input" type="text" name="Doctor / Surgeon" placeholder="Doctor / Surgeon">
+  <input class="input" type="text" height = "400px" name="What was discussed" placeholder="What was discussed">
+</form>
+     <button class="button">Add <i class="fa fa-plus" aria-hidden="true"></i></button>
+</div>
+<div class="container">
+   <h2>ER Visits:</h2>
+   <!-- <hr /> -->
+   <form>
+  <input class="input" type="text" name="Date" placeholder="Date">
+  <input class="input" type="text" name="Hospital/Medical Facility" placeholder="Hospital/Medical Facility">
+  <input class="input" type="text" name="Doctor / Surgeon" placeholder="Doctor / Surgeon">
+  Admitted?
+  <input type="radio" name="hospital stay" value="male" checked> Yes
+  <input type="radio" name="hospital stay" value="female"> No<br>
+    <input class="input" type="text" height = "400px" name="Results" placeholder="Results / Comments">
+      <button class="button">Add <i class="fa fa-plus" aria-hidden="true"></i></button>
+</form>
+
+</div>
+</body>
+</html>
+Contact GitHub API Training Shop Blog About

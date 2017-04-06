@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <title> PPCC--Medications</title>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <link href="css/style.css" type="text/css" rel="stylesheet">
 
 <style>
+
+.padtop {padding-top: 20px;}
+.star{  text-align: center;}
 .datetime{
   float: right;
   margin: 305px;
   text-align: center;
 }
 .pageBody{
-padding-left: 300px;
+padding-left: 310px;
   width: 75%;
   height: 100%;
-  border-style: solid;
+
 
   font-family: sans-serif;
   overflow: scroll;
@@ -60,6 +70,26 @@ color: #4e4c4c;
 table, th, td {
     border: 1px solid black;
 }
+
+
+h1 {
+  text-align: left;
+  font-size: 36px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 200;
+  color: #0078ab;
+}
+
+h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 200;
+    font-size: 20px;
+    color: #0078ab;
+}
+
+
+
+
 </style>
 
 
@@ -67,16 +97,8 @@ table, th, td {
 </head>
 <body>
 
-  <header>
-   <img src="http://group2.com/PPCC-Photos/PPCC-Logo-Splash.png" width="250" alt="Pediatric Palliative Care Coalition"/>
-   <button class="button addButton"> Add <i class="fa fa-plus" aria-hidden="true"></i></button>
- </header>
-
- <p id="demo"></p>
-
-
-
-  <ul class="nav">
+    <ul class="nav">
+   <li style="background: white;"><img src="http://group2.com/PPCC-Photos/PPCC-Logo-Header.png" width="280" alt="Pediatric Palliative Care Coalition" class="padtop"/></li>
     <li><a class="active" href="#patientprofile">Patient profile <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
     <li><a href="#calendar">Calendar <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
     <li><a href="#medication">Medications <i class="fa fa-chevron-right" aria-hidden="true"></i></a> </li>
@@ -91,7 +113,10 @@ table, th, td {
 <section class = "pageBody">
 
     <h3 class="todaysMedicatoins_header left" id="date">Today's Medications: </h3>
-    <button class="right button" type="button">Add/Edit</button>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn button addButton" data-toggle="modal" data-target="#myModal">
+      Add/Edit
+    </button>
     <!-- Link to more complete medication info-->
       <!-- How to link to the backend?-->
         <table class= "todaysMedicatoins" style="width:100%">
@@ -107,25 +132,33 @@ table, th, td {
             <td>Lowers Cholesterol</td>
             <td>500mg</td>
             <td>Daily</td>
-            <th>3:00</th>
+            <td>3:00</td>
           </tr>
           <tr class= "todaysMedicatoins">
             <td><strong>Nexium</strong></td>
             <td>Anti-acid</td>
             <td>250mg</td>
             <td>3x Daily</td>
-            <th>5:00</th>
+            <td>5:00</td>
+          </tr>
           <tr class= "todaysMedicatoins">
             <td><strong>Plavix</strong></td>
             <td>Blood Thinner</td>
             <td>300mg</td>
             <td>2x Daily</td>
-            <th>6:50</th>
+            <td>6:50</td>
+          </tr>
         </table>
 
-    <h3 class="currentMedications_header"> Current Medications:</h3>
+<p class="star">
+  ***
+</p>
+    <h3 class="currentMedications_header left"> Current Medications:</h3>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn button addButton" data-toggle="modal" data-target="#myModal">
+      Add/Edit
+    </button>
 
-    <button class="right button" type="button">Add/Edit</button>
     <table class="currentMedications"style="width:100%">
       <tr class="primaryRow">
         <th>Medication</th>
@@ -141,13 +174,51 @@ table, th, td {
         <td>Nexium</td>
         <td>Anti-acid</td>
         <td>250mg</td>
+      </tr>
       <tr class="currentMedications">
         <td>Plavix</td>
         <td>Blood Thinner</td>
         <td>300mg</td>
+      </tr>
+      <tr class="currentMedications">
+        <td>Advair Diskus</td>
+        <td>Asthma Inhaler</td>
+        <td>300mg</td>
+      </tr>
+     <tr class="currentMedications">
+        <td>Amoxicillin</td>
+        <td>Anti-biotic</td>
+        <td>300mg</td>
+      </tr>
     </table>
 
+    <p class="star">
+      ***
+    </p>
 
+<div class="pharm_list">
+  <h3 class="left">Pharmacy List: </h3>
+    <button class="right button" type="button">Add/Edit</button>
+  <table class="currentMedications"style="width:100%">
+    <tr class="primaryRow">
+      <th>Pharmacy</th>
+      <th>Street</th>
+      <th>Zip</th>
+
+
+    </tr>
+    <tr class="currentMedications">
+      <td>Giant Eagle</td>
+      <td>1234 Grocery Drive</td>
+      <th>12345</th>
+    </tr>
+    <tr class="currentMedications">
+      <td>Rite Aid</td>
+      <td>5678 Medicine Rd.</td>
+      <th>23456</th>
+    </tr>
+
+</div>
 
 </section>
 <script>
@@ -168,6 +239,42 @@ function formatDate(date) {
 
   document.getElementById("date").innerHTML = formatDate(new Date());
 </script>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add Medication</h4>
+      </div>
+      <div class="modal-body">
+
+        <h2>Medication</h2>
+        <!-- <hr /> -->
+          <form>
+          <input class="input" type="text" name="Name:" placeholder="Name">
+          <input class="input" type="text" name="Start Date" placeholder=" Start Date ">
+          <input class="input" type="text" name="End Date" placeholder=" End Date ">
+          <input class="input" type="text" name="Frequency" placeholder="Frequency">
+          <input class="input" type="text" name="Dosage" placeholder="Dosage">
+          <input class="input" type="text" name="Prescribing Doctor" placeholder="Prescribing Doctor" >
+          <input class="input" type="text" height = "400px" name="Notes" placeholder="Notes">
+          </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
 
 </body>
 </html>

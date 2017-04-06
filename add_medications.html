@@ -5,25 +5,68 @@
   <title> PPCC--Add Medications</title>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <link href="css/style.css" type="text/css" rel="stylesheet">
+<style>
+.input {
+  border-style: none;
+  border-bottom: solid;
+  border-color: #f89829
+  background: #e5e2e0;
+}
+.container{
+  border-style: black solid thin;
+  margin-left: 320px;
+  width: 50%;
+}
+h1 {
+  font-size:36px;
+  font-family:'Open Sans', sans-serif;
+  font-weight: 200;
+  color: #f89829;
+  background:none;
+  text-align:left;
+}
+h2 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 200;
+  font-size: 20px;
+  color: #f89829;
+}
+</style>
 </head>
 <body>
-
-</body>
-
   <header>
-   <img src="http://group2.com/PPCC-Photos/PPCC-Logo-Splash.png" width="250" alt="Pediatric Palliative Care Coalition"/>
+   <img src="http://group2.com/PPCC-Photos/PPCC-Logo-Header.png" width="250" alt="Pediatric Palliative Care Coalition"/>
    <button class="button addButton"> Add <i class="fa fa-plus" aria-hidden="true"></i></button>
  </header>
+ <ul class="nav">
+   <li><a href="#patientprofile">Home Activity Log <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
+   <li><a href="#calendar">Calendar <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
+   <li><a class="active" href="#medication">Medications <i class="fa fa-chevron-right" aria-hidden="true"></i></a> </li>
+   <li><a href="#homecareplan">Medical Care Notes <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
+   <li><a href="#appointmental">Profile <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
+   <li><a href="#carebook">Search <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
+   <li><a href="#carebook">Other Sections <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
+ </ul>
 
+<div class="container">
+  <h1 style="font-size:36px;font-family:'Open Sans', sans-serif;font-weight: 200;color: #f89829;background:none;text-align:left;">Add Medication:</h1>
+</div>
+<div class="container">
+<h2>Medication</h2>
+<!-- <hr /> -->
+  <form>
+  <input class="input" type="text" name="Name:" placeholder="Name">
+  <input class="input" type="text" name="Start Date" placeholder=" Start Date ">
+    <input class="input" type="text" name="End Date" placeholder=" End Date ">
+  <input class="input" type="text" name="Frequency" placeholder="Frequency">
+  <input class="input" type="text" name="Dosage" placeholder="Dosage">
+  <input class="input" type="text" name="Prescribing Doctor" placeholder="Prescribing Doctor" >
+  <input class="input" type="text" height = "400px" name="Notes" placeholder="Notes">
+  </form>
+  <button class="button">Add <i class="fa fa-plus" aria-hidden="true"></i></button>
+</div>
 
-  <ul class="nav">
-    <li><a class="active" href="#patientprofile">Patient profile <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
-    <li><a href="#calendar">Calendar <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
-    <li><a href="#medication">Medications <i class="fa fa-chevron-right" aria-hidden="true"></i></a> </li>
-    <li><a href="#homecareplan">Home Care Plan <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
-    <li><a href="#appointmental">Appointement Activity Log <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
-    <li><a href="#carebook">Care Book <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
-  </ul>
 
 </body>
 </html>
+Contact GitHub API Training Shop Blog About
