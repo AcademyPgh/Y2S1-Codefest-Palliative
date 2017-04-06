@@ -3,15 +3,25 @@ body {
 }
 
 .profileInput {
-  position: relative;
-  /*top: 135px;
-  left: 305px;*/
-  display: inline-block;
-  border-style: solid;
+  padding-top: 100px;
+  padding-left: 305px;
+  /*display: inline-block;*/
+  /*border-style: solid;*/
   width: 70%;
   height:75%;
   font-family: 'Open Sans', sans-serif;
-  overflow: scroll;
+}
+
+.profileSave {
+  display: inline;
+  float: right;
+}
+
+.profileCancel {
+  display: inline;
+  float: right;
+  margin-right: 1em;
+  background-color: #0078AB;
 }
 
 .left {
@@ -41,6 +51,11 @@ body {
 	border-bottom: solid;
 	border-color: #f89829;
 	background-color: #e5e2e0;
+}
+
+.sample {
+  padding-left: 2em;
+  background-color: #e5e2e0;
 }
 
 /*CSS FOR ADD PROFILE BUTTONS*/
